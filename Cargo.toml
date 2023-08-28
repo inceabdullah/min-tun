@@ -1,0 +1,11 @@
+[package]
+name = "min-tun"
+version = "0.1.0"
+authors = ["abdullah ince"]
+description = "A Rust library for finding the minimum available TUN device on Linux systems."
+edition = "2021"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
