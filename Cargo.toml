@@ -3,6 +3,7 @@ name = "min-tun"
 version = "0.1.0"
 authors = ["abdullah ince"]
 description = "A Rust library for finding the minimum available TUN device on Linux systems."
+repository = "https://github.com/inceabdullah/min-tun"
 edition = "2021"
 license = "MIT"
 
