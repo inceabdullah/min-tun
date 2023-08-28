@@ -1,6 +1,6 @@
 [package]
 name = "min-tun"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["abdullah ince"]
 description = "A Rust library for finding the minimum available TUN device on Linux systems."
 repository = "https://github.com/inceabdullah/min-tun"

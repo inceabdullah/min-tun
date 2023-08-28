@@ -1,40 +1,21 @@
-use std::fs;
+MIT License
 
-pub fn find_min_available_tun() -> Option<String> {
-    let path = "/sys/class/net/";
+Copyright (c) 2023 inceabdullah
 
-    // Read the directory
-    let entries = match fs::read_dir(path) {
-        Ok(entries) => entries,
-        Err(_) => return None,
-    };
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-    // Collect existing tun device names
-    let mut existing_tun_devices: Vec<u32> = Vec::new();
-    for entry in entries {
-        if let Ok(entry) = entry {
-            let name = entry.file_name();
-            let name_str = name.to_string_lossy();
-            if name_str.starts_with("tun") {
-                if let Ok(index) = name_str[3..].parse::<u32>() {
-                    existing_tun_devices.push(index);
-                }
-            }
-        }
-    }
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-    // Sort the indices
-    existing_tun_devices.sort();
-
-    // Find the first unused index
-    let mut min_available_tun = 0;
-    for &index in &existing_tun_devices {
-        if index == min_available_tun {
-            min_available_tun += 1;
-        } else {
-            break;
-        }
-    }
-
-    Some(format!("tun{}", min_available_tun))
-}
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
